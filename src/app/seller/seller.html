@@ -1,0 +1,187 @@
+<div class="all">
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">📦</div>
+      <div class="logo-text">
+        <h1>InventoryPro</h1>
+        <p>Point de vente</p>
+      </div>
+    </div>
+
+    <div class="nav-menu">
+      <div class="nav-item active">
+        <div class="nav-icon"></div>
+        <span>Ventes</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon"></div>
+        <span>Voir Produits</span>
+      </div>
+
+      <div class="nav-item">
+        <div class="nav-icon"></div>
+        <span>Toute les Ventes</span>
+      </div>
+    </div>
+
+    <div class="user-info">
+      <div class="user-avatar">Z</div>
+      <div class="user-details">
+        <h4>zaz</h4>
+        <p>raedziayoud.23@gmail.com</p>
+      </div>
+    </div>
+    <div class="logout">
+      <span>🚪</span>
+      <span>Déconnexion</span>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <div>
+        <h1>Point de vente</h1>
+        <p>Créez des ventes et générez des factures</p>
+      </div>
+      <div class="client-info">
+        <span>👤</span>
+        <span>Client: Non défini</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="product-selection">
+        <h2 class="section-title">Sélection des produits</h2>
+        <p class="section-subtitle">
+          Recherchez et ajoutez des produits à la vente
+        </p>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Rechercher un produit..."
+          />
+        </div>
+
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-header">
+              <div>
+                <div class="product-name">Samsung Galaxy S23</div>
+              </div>
+              <div class="stock-badge stock-low">Stock: 5</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">€899</div>
+              <button class="add-btn">
+                <span class="plus-icon">+</span>
+                <span>Ajouter</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header">
+              <div>
+                <div class="product-name">iPhone 14 Pro</div>
+              </div>
+              <div class="stock-badge stock-medium">Stock: 25</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">€1199</div>
+              <button class="add-btn">
+                <span class="plus-icon">+</span>
+                <span>Ajouter</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header">
+              <div>
+                <div class="product-name">MacBook Pro 16"</div>
+              </div>
+              <div class="stock-badge stock-low">Stock: 2</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">€2499</div>
+              <button class="add-btn">
+                <span class="plus-icon">+</span>
+                <span>Ajouter</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header">
+              <div>
+                <div class="product-name">Nike Air Max</div>
+              </div>
+              <div class="stock-badge stock-high">Stock: 45</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">€129</div>
+              <button class="add-btn">
+                <span class="plus-icon">+</span>
+                <span>Ajouter</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header">
+              <div>
+                <div class="product-name">Chaise de bureau</div>
+              </div>
+              <div class="stock-badge stock-medium">Stock: 12</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">€199</div>
+              <button class="add-btn">
+                <span class="plus-icon">+</span>
+                <span>Ajouter</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="content-panier">
+        <div class="panier-header">
+          <div class="panier-title">
+            🛒 Panier
+            <span class="panier-count">0</span>
+          </div>
+          <button class="clear-btn">Vider</button>
+        </div>
+
+        <div class="panier-items">
+          <div class="panier-empty">
+            <div class="panier-empty-icon">🛍️</div>
+            <p>Votre panier est vide</p>
+            <p>Ajoutez des produits pour commencer</p>
+          </div>
+        </div>
+
+        <div class="panier-summary">
+          <div class="summary-row">
+            <span class="summary-label">Sous-total:</span>
+            <span class="summary-value" id="subtotal">€0.00</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">TVA (20%):</span>
+            <span class="summary-value" id="tax">€0.00</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="total">€0.00</span>
+          </div>
+
+          <button class="checkout-btn" disabled>💳 Procéder au paiement</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
