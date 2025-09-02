@@ -9,11 +9,11 @@
     </div>
 
     <div class="nav-menu">
-      <div class="nav-item active">
+      <div class="nav-item" routerLink="ventes">
         <div class="nav-icon"></div>
         <span>Ventes</span>
       </div>
-      <div class="nav-item">
+      <div class="nav-item" routerLink="voirproduits">
         <div class="nav-icon"></div>
         <span>Voir Produits</span>
       </div>
@@ -43,13 +43,78 @@
         <h1>Point de vente</h1>
         <p>Créez des ventes et générez des factures</p>
       </div>
-      <div class="client-info">
-        <span>👤</span>
-        <span>Client: Non défini</span>
+      <div class="Buttons">
+        <div class="client-info" (click)="openClientForm()">
+          <span>👤</span>
+          <span>Ajouter un Client</span>
+        </div>
+        <div class="modal" *ngIf="showClientForm">
+          <div class="modal-content">
+            <span class="close" (click)="closeClientForm()">&times;</span>
+            <h2>Informations client</h2>
+            <p>Saisissez les informations du client pour cette vente</p>
+
+            <form (ngSubmit)="saveClient()" #clientForm="ngForm">
+              <label>Nom complet</label>
+              <input
+                type="text"
+                [(ngModel)]="client.name"
+                name="name"
+                required
+              />
+
+              <label>Email</label>
+              <input type="email" [(ngModel)]="client.email" name="email" />
+
+              <label>Téléphone (optionnel)</label>
+              <input type="tel" [(ngModel)]="client.phone" name="phone" />
+
+              <div class="form-actions">
+                <button type="button" (click)="closeClientForm()">
+                  Annuler
+                </button>
+                <button type="submit" [disabled]="!clientForm.form.valid">
+                  Enregistrer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Search -->
+        <div class="client-info" (click)="openClientSearchForm()">
+          <span>👤</span>
+          <span>Search un Client</span>
+        </div>
+        <div class="modal" *ngIf="showClientSearchForm">
+          <div class="modal-content">
+            <span class="close" (click)="closeClientSearchForm()">&times;</span>
+            <h2>Informations client</h2>
+            <p>Saisissez les informations du client pour cette vente</p>
+
+            <form (ngSubmit)="Search()" #clientForm="ngForm">
+              <label>Email</label>
+              <input type="email" [(ngModel)]="client.email" name="email" />
+
+              <div class="form-actions">
+                <button type="button" (click)="closeClientSearchForm()">
+                  Annuler
+                </button>
+                <button type="submit" [disabled]="!clientForm.form.valid">
+                  Enregistrer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
+      <!-- Bouton pour ouvrir -->
+
+      <!-- Modal affiché si showClientForm = true -->
     </div>
 
-    <div class="content">
+    <router-outlet></router-outlet>
+
+    <!-- <div class="content">
       <div class="product-selection">
         <h2 class="section-title">Sélection des produits</h2>
         <p class="section-subtitle">
@@ -182,6 +247,6 @@
           <button class="checkout-btn" disabled>💳 Procéder au paiement</button>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
