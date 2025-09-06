@@ -5,9 +5,11 @@ import { Seller } from './seller/seller';
 import { Voirproduits } from './voirproduits/voirproduits';
 import { Ventes } from './ventes/ventes';
 import { Tousventes } from './tousventes/tousventes';
+import { Admin } from './admin/admin';
+import { Tableau } from './tableau/tableau';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'seller', pathMatch: 'full' },
+  { path: '', redirectTo: 'admin', pathMatch: 'full' },
 
   { path: 'singup', component: Singup },
   { path: 'login', component: Login },
@@ -20,6 +22,15 @@ export const routes: Routes = [
       { path: 'voirproduits', component: Voirproduits },
       { path: 'ventes', component: Ventes },
       { path: 'tousventes', component: Tousventes },
+    ],
+  },
+
+  {
+    path: 'admin',
+    component: Admin,
+    children: [
+      { path: '', redirectTo: 'admin', pathMatch: 'full' },
+      { path: 'tableau', component: Tableau },
     ],
   },
 ];
