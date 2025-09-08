@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,4 +8,13 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './admin.html',
   styleUrl: './admin.scss',
 })
-export class Admin {}
+export class Admin {
+  activeLink: string = 'tableau'; // default active link
+
+  constructor(private router: Router) {}
+
+  setActive(link: string) {
+    this.activeLink = link;
+    this.router.navigate(['admin', link]); // navigate to child route
+  }
+}

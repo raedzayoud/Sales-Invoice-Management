@@ -5,12 +5,42 @@
         📦 InventoryPro <br /><small>Administration</small>
       </div>
       <ul class="nav">
-        <li class="active" routerLink="tableau">Tableau de bord</li>
-        <li>Produits</li>
-        <li>Catégories</li>
-        <li>Fournisseurs</li>
-        <li>Ventes</li>
-        <li>Rapports</li>
+        <li
+          [class.active]="activeLink === 'tableau'"
+          (click)="setActive('tableau')"
+        >
+          Tableau de bord
+        </li>
+        <li
+          [class.active]="activeLink === 'produit'"
+          (click)="setActive('produit')"
+        >
+          Produits
+        </li>
+        <li
+          [class.active]="activeLink === 'categorie'"
+          (click)="setActive('categorie')"
+        >
+          Catégories
+        </li>
+        <li
+          [class.active]="activeLink === 'fournisseurs'"
+          (click)="setActive('fournisseurs')"
+        >
+          Fournisseurs
+        </li>
+        <li
+          [class.active]="activeLink === 'ventes'"
+          (click)="setActive('ventes')"
+        >
+          Ventes
+        </li>
+        <li
+          [class.active]="activeLink === 'rapports'"
+          (click)="setActive('rapports')"
+        >
+          Rapports
+        </li>
       </ul>
     </div>
     <div class="user-section">
@@ -22,6 +52,4 @@
   </div>
 
   <router-outlet></router-outlet>
-
-  <!-- Main -->
 </div>

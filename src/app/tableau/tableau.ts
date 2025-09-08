@@ -1,3 +1,4 @@
+// tableau.component.ts
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BaseChartDirective } from 'ng2-charts';
@@ -6,7 +7,7 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
 @Component({
   selector: 'app-tableau',
   standalone: true,
-  imports: [RouterLink, BaseChartDirective],
+  imports: [RouterLink, BaseChartDirective], // Fixed: Import BaseChartDirective
   templateUrl: './tableau.html',
   styleUrls: ['./tableau.scss'],
 })

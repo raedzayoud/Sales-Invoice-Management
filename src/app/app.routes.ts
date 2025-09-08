@@ -7,6 +7,8 @@ import { Ventes } from './ventes/ventes';
 import { Tousventes } from './tousventes/tousventes';
 import { Admin } from './admin/admin';
 import { Tableau } from './tableau/tableau';
+import { Produit } from './produit/produit';
+import { Categorie } from './categorie/categorie';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'admin', pathMatch: 'full' },
@@ -31,6 +33,8 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'admin', pathMatch: 'full' },
       { path: 'tableau', component: Tableau },
+      { path: 'produit', component: Produit },
+      { path: 'categorie', component: Categorie },
     ],
   },
 ];
