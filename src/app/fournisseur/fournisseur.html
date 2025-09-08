@@ -1,0 +1,138 @@
+<div class="containerfade-in">
+  <div class="header">
+    <h2>
+      <div class="header-icon">
+        <i class="fas fa-truck"></i>
+      </div>
+      Liste des Fournisseurs
+    </h2>
+    <a href="#" class="btn-add pulse" onclick="addSupplier()">
+      <i class="fas fa-plus"></i>
+      Ajouter Fournisseur
+    </a>
+  </div>
+
+  <div class="table-container">
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-number" id="totalSuppliers">2</div>
+        <div class="stat-label">Total Fournisseurs</div>
+      </div>
+      <div
+        class="stat-card"
+        style="background: linear-gradient(135deg, #10b981 0%, #059669 100%)"
+      >
+        <div class="stat-number">2</div>
+        <div class="stat-label">Actifs</div>
+      </div>
+      <div
+        class="stat-card"
+        style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"
+      >
+        <div class="stat-number">0</div>
+        <div class="stat-label">En attente</div>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Rechercher un fournisseur..."
+        id="searchInput"
+        oninput="searchSuppliers()"
+      />
+    </div>
+
+    <table id="suppliersTable">
+      <thead>
+        <tr>
+          <th><i class="fas fa-hashtag" style="margin-right: 8px"></i>ID</th>
+          <th><i class="fas fa-building" style="margin-right: 8px"></i>Nom</th>
+          <th>
+            <i class="fas fa-phone" style="margin-right: 8px"></i>Téléphone
+          </th>
+          <th>
+            <i class="fas fa-envelope" style="margin-right: 8px"></i>Email
+          </th>
+          <th>
+            <i class="fas fa-map-marker-alt" style="margin-right: 8px"></i
+            >Adresse
+          </th>
+          <th><i class="fas fa-cog" style="margin-right: 8px"></i>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>001</strong></td>
+          <td class="supplier-name">Samsung Tunisia</td>
+          <td>
+            <div class="contact-info">
+              <i class="fas fa-phone contact-icon"></i>
+              +216 71 123 456
+            </div>
+          </td>
+          <td>
+            <div class="contact-info">
+              <i class="fas fa-envelope contact-icon"></i>
+              contact@samsung.tn
+            </div>
+          </td>
+          <td>
+            <div class="contact-info">
+              <i class="fas fa-map-marker-alt contact-icon"></i>
+              Tunis, Tunisia
+            </div>
+          </td>
+          <td>
+            <div class="actions">
+              <button class="btn btn-edit" onclick="editSupplier(1)">
+                <i class="fas fa-edit"></i>
+                Modifier
+              </button>
+              <button class="btn btn-delete" onclick="deleteSupplier(1)">
+                <i class="fas fa-trash"></i>
+                Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>002</strong></td>
+          <td class="supplier-name">Dell Distributor</td>
+          <td>
+            <div class="contact-info">
+              <i class="fas fa-phone contact-icon"></i>
+              +216 74 987 654
+            </div>
+          </td>
+          <td>
+            <div class="contact-info">
+              <i class="fas fa-envelope contact-icon"></i>
+              sales@dell.tn
+            </div>
+          </td>
+          <td>
+            <div class="contact-info">
+              <i class="fas fa-map-marker-alt contact-icon"></i>
+              Sousse, Tunisia
+            </div>
+          </td>
+          <td>
+            <div class="actions">
+              <button class="btn btn-edit" onclick="editSupplier(2)">
+                <i class="fas fa-edit"></i>
+                Modifier
+              </button>
+              <button class="btn btn-delete" onclick="deleteSupplier(2)">
+                <i class="fas fa-trash"></i>
+                Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
