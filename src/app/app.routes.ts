@@ -11,6 +11,7 @@ import { Produit } from './produit/produit';
 import { Categorie } from './categorie/categorie';
 import { Venteradmin } from './venteradmin/venteradmin';
 import { Fournisseur } from './fournisseur/fournisseur';
+import { Rapport } from './rapport/rapport';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'admin', pathMatch: 'full' },
@@ -33,12 +34,13 @@ export const routes: Routes = [
     path: 'admin',
     component: Admin,
     children: [
-      { path: '', redirectTo: 'admin', pathMatch: 'full' },
+      { path: '', redirectTo: 'tableau', pathMatch: 'full' },
       { path: 'tableau', component: Tableau },
       { path: 'produit', component: Produit },
       { path: 'categorie', component: Categorie },
       { path: 'venteradmin', component: Venteradmin },
       { path: 'fournisseur', component: Fournisseur },
+      { path: 'rapport', component: Rapport },
     ],
   },
 ];
