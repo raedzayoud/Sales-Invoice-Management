@@ -15,6 +15,7 @@
 
 /* Container principal */
 .signup-container {
+  max-height: 89vh;
   display: flex;
   flex-direction: column; /* pour centrer l'icône + form */
   background: #ffffff;
@@ -24,6 +25,8 @@
   width: 30%;
   padding: 30px;
   background-color: #e6f6f9; /* gris clair */
+  max-width: 450px; /* prevents it from being too wide */
+  min-width: 300px; /* keeps it usable */
 }
 
 /* Cercle icône */
@@ -157,4 +160,40 @@ button[disabled] {
 .icon-circle i {
   color: white;
   font-size: 28px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .signup-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    width: 70%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    width: 90%;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .signup-form h1 {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    width: 100%; /* full width on mobile */
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 10px;
+  }
 }

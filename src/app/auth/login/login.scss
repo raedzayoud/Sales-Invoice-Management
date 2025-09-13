@@ -16,6 +16,8 @@
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   width: 30%;
+  max-width: 420px; /* Prevents it from getting too wide */
+  min-width: 300px; /* Prevents it from collapsing too much */
 }
 
 /* Colonne du formulaire */
@@ -154,4 +156,37 @@ button[disabled] {
 .icon-circle i {
   color: white;
   font-size: 28px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .login-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .login-form {
+    padding: 25px 20px;
+  }
+
+  .login-form h2 {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    width: 100%; /* Full width for mobile */
+  }
 }

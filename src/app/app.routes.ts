@@ -1,17 +1,17 @@
 import { Routes } from '@angular/router';
 import { Singup } from './auth/singup/singup';
 import { Login } from './auth/login/login';
-import { Seller } from './seller/seller';
-import { Voirproduits } from './voirproduits/voirproduits';
-import { Ventes } from './ventes/ventes';
-import { Tousventes } from './tousventes/tousventes';
-import { Admin } from './admin/admin';
-import { Tableau } from './tableau/tableau';
-import { Produit } from './produit/produit';
-import { Categorie } from './categorie/categorie';
-import { Venteradmin } from './venteradmin/venteradmin';
-import { Fournisseur } from './fournisseur/fournisseur';
-import { Rapport } from './rapport/rapport';
+import { Seller } from './pages/seller/seller';
+import { Voirproduits } from './pages/voirproduits/voirproduits';
+import { Ventes } from './pages/ventes/ventes';
+import { Tousventes } from './pages/tousventes/tousventes';
+import { Admin } from './pages/admin/admin';
+import { Tableau } from './pages/tableau/tableau';
+import { Produit } from './pages/produit/produit';
+import { Categorie } from './pages/categorie/categorie';
+import { Venteradmin } from './pages/venteradmin/venteradmin';
+import { Fournisseur } from './pages/fournisseur/fournisseur';
+import { Rapport } from './pages/rapport/rapport';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'admin', pathMatch: 'full' },

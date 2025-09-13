@@ -39,35 +39,6 @@
           </div>
         </div>
 
-        <!-- Phone -->
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input
-            id="phone"
-            name="phone"
-            type="text"
-            [(ngModel)]="phone"
-            #phoneRef="ngModel"
-            required
-            pattern="^[0-9]{8,15}$"
-            placeholder="Enter your phone"
-          />
-          <div
-            class="error"
-            *ngIf="
-              phoneRef.invalid &&
-              (phoneRef.dirty || phoneRef.touched || submitted)
-            "
-          >
-            <small *ngIf="phoneRef.errors?.['required']"
-              >Phone is required.</small
-            >
-            <small *ngIf="phoneRef.errors?.['pattern']"
-              >Phone must be digits.</small
-            >
-          </div>
-        </div>
-
         <!-- Email -->
         <div class="form-group">
           <label for="email">Email</label>
