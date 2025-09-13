@@ -16,7 +16,8 @@ import { Rapport } from './pages/rapport/rapport';
 export const routes: Routes = [
   { path: '', redirectTo: 'admin', pathMatch: 'full' },
 
-  { path: 'singup', component: Singup },
+  { path: 'signup', component: Singup }, // corrected
+
   { path: 'login', component: Login },
 
   {

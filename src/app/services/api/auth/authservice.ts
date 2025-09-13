@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  baseUrl: string = 'http://127.0.0.1:8000/api/';
+  baseUrl: string = 'http://127.0.0.1:8080/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -24,15 +24,12 @@ export class AuthService {
   }
 
   signup(name: string, email: string, password: string): Observable<any> {
-    const signupUrl = this.baseUrl + 'auth/signup';
+    const signupUrl = `${this.baseUrl}auth/signup`;
 
-    const body = {
-      name,
-      email,
-      password,
-      password_confirmation: password,
-    };
+    const body = { name, email, password };
 
-    return this.http.post(signupUrl, body);
+    return this.http.post(signupUrl, body, {
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

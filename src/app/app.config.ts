@@ -18,6 +18,7 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
+import { provideHttpClient } from '@angular/common/http';
 
 ChartJS.register(
   CategoryScale,
@@ -35,5 +36,6 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    provideHttpClient(),
   ],
 };
