@@ -11,7 +11,7 @@
       </div>
 
       <h2>Login</h2>
-      <form #loginForm="ngForm">
+      <form #loginForm="ngForm" (ngSubmit)="Login(loginForm)">
         <div class="form-group">
           <label for="email">Email</label>
           <input

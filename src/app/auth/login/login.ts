@@ -49,19 +49,19 @@ export class Login {
     this.authservice.login(this.email, this.password).subscribe({
       next: (response: any) => {
         this.loading = false;
-        if (response.message === 'email or password is not correct ') {
+        if (response.message === 'Email or password incorrect') {
           this.snackBar.open(response.message, 'Close', {
             duration: 3000,
             verticalPosition: 'top',
             panelClass: ['error-snackbar'],
           });
         } else {
-          localStorage.setItem('token', response.token);
-          this.snackBar.open('✅ ' + response.message, 'OK', {
-            duration: 3000,
-            panelClass: ['success-snackbar'],
-          });
-          this.router.navigate(['home']);
+          //  localStorage.setItem('token', response.token);
+          // this.snackBar.open('✅ ' + response.status, 'OK', {
+          //   duration: 3000,
+          //   panelClass: ['success-snackbar'],
+          // });
+          this.router.navigate(['/seller']);
         }
       },
       error: () => {
