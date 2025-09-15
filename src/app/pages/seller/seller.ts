@@ -11,12 +11,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class Seller {
   showClientForm = false; // <-- flag for modal
-  showClientSearchForm = false; // <-- flag for modal
 
   client = {
-    name: '',
     email: '',
-    phone: '',
   };
 
   openClientForm() {
@@ -27,21 +24,9 @@ export class Seller {
     this.showClientForm = false;
   }
 
-  openClientSearchForm() {
-    this.showClientSearchForm = true;
-  }
-
-  closeClientSearchForm() {
-    this.showClientSearchForm = false;
-  }
-
   saveClient() {
     console.log('Client enregistré :', this.client);
     // 👉 ici tu peux envoyer vers ton service backend ou stocker dans un state
     this.closeClientForm();
-  }
-  Search() {
-    console.log('Client Found');
-    this.closeClientSearchForm();
   }
 }

@@ -55,52 +55,15 @@
             <p>Saisissez les informations du client pour cette vente</p>
 
             <form (ngSubmit)="saveClient()" #clientForm="ngForm">
-              <label>Nom complet</label>
-              <input
-                type="text"
-                [(ngModel)]="client.name"
-                name="name"
-                required
-              />
-
               <label>Email</label>
               <input type="email" [(ngModel)]="client.email" name="email" />
-
-              <label>Téléphone (optionnel)</label>
-              <input type="tel" [(ngModel)]="client.phone" name="phone" />
 
               <div class="form-actions">
                 <button type="button" (click)="closeClientForm()">
                   Annuler
                 </button>
                 <button type="submit" [disabled]="!clientForm.form.valid">
-                  Enregistrer
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- Search -->
-        <div class="client-info" (click)="openClientSearchForm()">
-          <span>👤</span>
-          <span>Search un Client</span>
-        </div>
-        <div class="modal" *ngIf="showClientSearchForm">
-          <div class="modal-content">
-            <span class="close" (click)="closeClientSearchForm()">&times;</span>
-            <h2>Informations client</h2>
-            <p>Saisissez les informations du client pour cette vente</p>
-
-            <form (ngSubmit)="Search()" #clientForm="ngForm">
-              <label>Email</label>
-              <input type="email" [(ngModel)]="client.email" name="email" />
-
-              <div class="form-actions">
-                <button type="button" (click)="closeClientSearchForm()">
-                  Annuler
-                </button>
-                <button type="submit" [disabled]="!clientForm.form.valid">
-                  Enregistrer
+                  Search
                 </button>
               </div>
             </form>

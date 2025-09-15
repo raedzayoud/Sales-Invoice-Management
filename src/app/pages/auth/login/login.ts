@@ -3,7 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { AuthService } from '../../services/api/auth/authservice';
+import { AuthService } from '../../../services/api/auth/authservice';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
