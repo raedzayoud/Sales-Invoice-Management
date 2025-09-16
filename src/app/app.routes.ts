@@ -3,7 +3,6 @@ import { Singup } from '../app/pages/auth/singup/singup';
 import { Login } from '../app/pages/auth/login/login';
 import { Seller } from './pages/seller/seller';
 import { Voirproduits } from './pages/voirproduits/voirproduits';
-import { Ventes } from './pages/ventes/ventes';
 import { Tousventes } from './pages/tousventes/tousventes';
 import { Admin } from './pages/admin/admin';
 import { Tableau } from './pages/tableau/tableau';
@@ -13,6 +12,7 @@ import { Venteradmin } from './pages/venteradmin/venteradmin';
 import { Fournisseur } from './pages/fournisseur/fournisseur';
 import { Rapport } from './pages/rapport/rapport';
 import { Injectable } from '@angular/core';
+import { ventes } from './pages/ventes/ventes';
 
 @Injectable({
   providedIn: 'root', // 🔥 Angular va s’occuper d’injecter
@@ -46,7 +46,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'ventes', pathMatch: 'full' },
       { path: 'voirproduits', component: Voirproduits },
-      { path: 'ventes', component: Ventes },
+      { path: 'ventes', component: ventes },
       { path: 'tousventes', component: Tousventes },
     ],
   },

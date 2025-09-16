@@ -6,28 +6,29 @@
         Gérez votre inventaire et suivez les niveaux de stock
       </p>
     </div>
-    <!-- <button class="btn-add">+ Ajouter un produit</button> -->
   </div>
 
-  <div class="stats">
+  <!-- Stats -->
+  <div class="stats" *ngIf="!loading">
     <div class="card">
       <p>Total produits</p>
-      <h2>5</h2>
+      <h2>{{ totalProduit }}</h2>
     </div>
     <div class="card">
       <p>Stock faible</p>
-      <h2>1</h2>
+      <h2>{{ stockFaible }}</h2>
     </div>
     <div class="card">
       <p>Stock critique</p>
-      <h2>1</h2>
+      <h2>{{ stockCritique }}</h2>
     </div>
     <div class="card">
       <p>Valeur stock</p>
-      <h2>€47 661</h2>
+      <h2>€{{ valeurStock }}</h2>
     </div>
   </div>
 
+  <!-- Liste -->
   <div class="product-list">
     <h3>Liste des produits</h3>
     <input type="text" placeholder="Rechercher par nom ou fournisseur..." />
@@ -49,29 +50,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Samsung Galaxy S23</td>
-          <td>Électronique</td>
-          <td>Samsung</td>
-          <td>€899</td>
-          <td>5</td>
-          <td><span class="status stock-faible">Stock faible</span></td>
-        </tr>
-        <tr>
-          <td>iPhone 14 Pro</td>
-          <td>Électronique</td>
-          <td>Apple</td>
-          <td>€1199</td>
-          <td>25</td>
-          <td><span class="status en-stock">En stock</span></td>
-        </tr>
-        <tr>
-          <td>MacBook Pro 16"</td>
-          <td>Informatique</td>
-          <td>Apple</td>
-          <td>€2499</td>
-          <td>2</td>
-          <td><span class="status stock-critique">Critique</span></td>
+        <tr *ngFor="let produit of produits">
+          <td>{{ produit.name }}</td>
+          <td>{{ produit.categoryName }}</td>
+          <td>{{ produit.supplierName }}</td>
+          <td>€{{ produit.price }}</td>
+          <td>{{ produit.stock }}</td>
+          <td>
+            <span class="status" [ngClass]="getStatutClass(produit.stock)">
+              {{ getStatut(produit.stock) }}
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>

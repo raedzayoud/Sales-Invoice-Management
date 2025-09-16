@@ -56,7 +56,7 @@ export class Login {
             panelClass: ['error-snackbar'],
           });
         } else {
-          //  localStorage.setItem('token', response.token);
+          localStorage.setItem('token', response.token);
           // this.snackBar.open('✅ ' + response.status, 'OK', {
           //   duration: 3000,
           //   panelClass: ['success-snackbar'],

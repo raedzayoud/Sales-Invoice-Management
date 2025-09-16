@@ -1,16 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common'; // ✅ apporte NgFor, NgIf, NgClass
 import { FormsModule } from '@angular/forms';
-
-interface Product {
-  name: string;
-  price: number;
-  stock: number;
-}
+import { ProduitModel } from '../../services/models/produitmodel';
+import { produitService } from '../../services/api/produit/produit';
 
 interface CartItem {
-  product: Product;
+  product: ProduitModel;
   quantity: number;
 }
 
@@ -21,15 +17,24 @@ interface CartItem {
   styleUrl: './ventes.scss',
   standalone: true,
 })
-export class Ventes {
-  products: Product[] = [
-    { name: 'Samsung Galaxy S23', price: 899, stock: 5 },
-    { name: 'iPhone 14 Pro', price: 1199, stock: 25 },
-    { name: 'MacBook Pro 16"', price: 2499, stock: 2 },
-    { name: 'Nike Air Max', price: 129, stock: 45 },
-    { name: 'Chaise de bureau', price: 199, stock: 12 },
-  ];
+export class ventes implements OnInit {
+  constructor(private produitService: produitService) {}
+  products: ProduitModel[] = [];
   cart: CartItem[] = [];
+  loading = true;
+
+  ngOnInit(): void {
+    this.produitService.getAllProduits().subscribe({
+      next: (data: any) => {
+        this.products = data.products;
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+      },
+    });
+  }
+
   get subtotal() {
     return this.cart.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
