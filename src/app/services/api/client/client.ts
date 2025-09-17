@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class produitService {
+export class ClientService {
   baseUrl: string = 'http://127.0.0.1:8080/api/';
-
   constructor(private http: HttpClient) {}
 
-  getAllProduits() {
-    const url = this.baseUrl + 'products';
+  getClient(email: string) {
+    const url = `${this.baseUrl}client/email/${email}`;
+
     // Get token from localStorage
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders({

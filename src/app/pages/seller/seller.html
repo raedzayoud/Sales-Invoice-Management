@@ -44,26 +44,41 @@
         <p>Créez des ventes et générez des factures</p>
       </div>
       <div class="Buttons">
-        <div class="client-info" (click)="openClientForm()">
+        <div
+          class="client-info"
+          (click)="!buttonDisabled && openClientForm()"
+          [class.disabled]="buttonDisabled"
+        >
           <span>👤</span>
-          <span>Ajouter un Client</span>
+          <span *ngIf="client == null">Ajouter un Client</span>
+          <span *ngIf="client !== null">{{ client.email }}</span>
         </div>
+
         <div class="modal" *ngIf="showClientForm">
           <div class="modal-content">
             <span class="close" (click)="closeClientForm()">&times;</span>
             <h2>Informations client</h2>
             <p>Saisissez les informations du client pour cette vente</p>
 
-            <form (ngSubmit)="saveClient()" #clientForm="ngForm">
+            <form (ngSubmit)="searchClient()" #clientForm="ngForm">
               <label>Email</label>
-              <input type="email" [(ngModel)]="client.email" name="email" />
+              <input type="email" [(ngModel)]="email" name="email" />
+
+              <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+              <div *ngIf="successMessage" class="success">
+                {{ successMessage }}
+              </div>
 
               <div class="form-actions">
                 <button type="button" (click)="closeClientForm()">
                   Annuler
                 </button>
-                <button type="submit" [disabled]="!clientForm.form.valid">
-                  Search
+                <button
+                  type="submit"
+                  [disabled]="!clientForm.form.valid || loadingClient"
+                >
+                  <span *ngIf="!loadingClient">Search</span>
+                  <span *ngIf="loadingClient">Searching...</span>
                 </button>
               </div>
             </form>

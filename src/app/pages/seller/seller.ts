@@ -1,32 +1,64 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { ClientService } from '../../services/api/client/client';
+
 @Component({
   selector: 'app-seller',
+  standalone: true,
   imports: [FormsModule, NgIf, RouterLink, RouterOutlet],
   templateUrl: './seller.html',
   styleUrls: ['./seller.scss'],
 })
 export class Seller {
-  showClientForm = false; // <-- flag for modal
+  email: string = '';
+  loadingClient = false;
+  showClientForm = false;
 
-  client = {
-    email: '',
-  };
+  client: any = null;
+  errorMessage: string = '';
+  successMessage: string = '';
+  buttonDisabled = false;
+
+  constructor(private clientService: ClientService) {}
 
   openClientForm() {
     this.showClientForm = true;
+    this.errorMessage = '';
+    this.client = null;
   }
 
   closeClientForm() {
     this.showClientForm = false;
+    this.email = '';
+    this.errorMessage = '';
+    //   this.client = null;
   }
 
-  saveClient() {
-    console.log('Client enregistré :', this.client);
-    // 👉 ici tu peux envoyer vers ton service backend ou stocker dans un state
-    this.closeClientForm();
+  searchClient() {
+    if (!this.email) return;
+
+    this.loadingClient = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+    this.client = null;
+
+    this.clientService.getClient(this.email).subscribe({
+      next: (data: any) => {
+        this.client = data.client;
+        this.successMessage = '✅ Client trouvé avec succès';
+        this.loadingClient = false;
+
+        this.buttonDisabled = true; // ✅ disable button after success
+        this.closeClientForm();
+      },
+      error: (err) => {
+        console.error('Erreur lors de la recherche du client', err);
+        this.errorMessage =
+          err.error?.error || 'Impossible de trouver le client.';
+        this.loadingClient = false;
+      },
+    });
   }
 }

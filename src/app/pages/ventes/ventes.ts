@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { CommonModule } from '@angular/common'; // ✅ apporte NgFor, NgIf, NgClass
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProduitModel } from '../../services/models/produitmodel';
 import { produitService } from '../../services/api/produit/produit';
+import { ClientService } from '../../services/api/client/client';
+import { ClientModel } from '../../services/models/client';
 
 interface CartItem {
   product: ProduitModel;
@@ -18,10 +20,16 @@ interface CartItem {
   standalone: true,
 })
 export class ventes implements OnInit {
-  constructor(private produitService: produitService) {}
+  constructor(
+    private produitService: produitService,
+    private clientService: ClientService
+  ) {}
   products: ProduitModel[] = [];
   cart: CartItem[] = [];
   loading = true;
+  client: ClientModel | undefined;
+  loadingClient = true;
+  email: string = '';
 
   ngOnInit(): void {
     this.produitService.getAllProduits().subscribe({
