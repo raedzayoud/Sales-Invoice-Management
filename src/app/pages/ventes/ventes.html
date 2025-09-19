@@ -47,9 +47,9 @@
     <div class="panier-header">
       <div class="panier-title">
         🛒 Panier
-        <span class="panier-count">0</span>
+        <span class="panier-count">{{ cart.length }}</span>
       </div>
-      <button class="clear-btn">Vider</button>
+      <button class="clear-btn" (click)="clearCart()">Vider</button>
     </div>
 
     <div class="panier-items">
@@ -82,9 +82,24 @@
         <span>€{{ total.toFixed(2) }}</span>
       </div>
 
-      <button class="checkout-btn" [disabled]="cart.length === 0">
+      <!-- error message -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        class="checkout-btn"
+        (click)="savePanier()"
+        [disabled]="cart.length === 0"
+      >
         💳 Procéder au paiement
       </button>
+    </div>
+  </div>
+  <div class="modal-overlay" *ngIf="successMessage">
+    <div class="modal-content">
+      <h3>{{ successMessage }}</h3>
+      <button class="close-btn" (click)="successMessage = ''">Fermer</button>
     </div>
   </div>
 </div>

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ClientService } from '../../services/api/client/client';
+import { SharedclientService } from '../../services/shared/sharedclient';
 
 @Component({
   selector: 'app-seller',
@@ -16,12 +17,20 @@ export class Seller {
   loadingClient = false;
   showClientForm = false;
 
+  emailUser: string | null = localStorage.getItem('email');
+  name: string | null = localStorage.getItem('name');
+
+  idUser: number | null = Number(localStorage.getItem('id'));
+
   client: any = null;
   errorMessage: string = '';
   successMessage: string = '';
   buttonDisabled = false;
 
-  constructor(private clientService: ClientService) {}
+  constructor(
+    private clientService: ClientService,
+    private sharedclientService: SharedclientService
+  ) {}
 
   openClientForm() {
     this.showClientForm = true;
@@ -47,10 +56,9 @@ export class Seller {
     this.clientService.getClient(this.email).subscribe({
       next: (data: any) => {
         this.client = data.client;
+        this.sharedclientService.setClient(this.client);
         this.successMessage = '✅ Client trouvé avec succès';
         this.loadingClient = false;
-
-        this.buttonDisabled = true; // ✅ disable button after success
         this.closeClientForm();
       },
       error: (err) => {

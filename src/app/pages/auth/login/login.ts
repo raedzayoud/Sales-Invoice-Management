@@ -1,21 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../../services/api/auth/authservice';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { UserModel } from '../../../services/models/user';
+import { UserService } from '../../../services/api/user/user';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    RouterLink,
-    HttpClientModule, // ✅ HttpClientModule is correct here
-    FormsModule,
-    NgIf,
-    MatSnackBarModule,
-  ],
+  imports: [RouterLink, HttpClientModule, FormsModule, NgIf, MatSnackBarModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -24,15 +20,36 @@ export class Login {
   password: string = '';
   notifcation: string = '';
   loading: boolean = false;
+  user: UserModel | null = null;
 
   constructor(
     private router: Router,
     private authservice: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private userService: UserService
   ) {}
 
   navigateToRegister() {
     this.router.navigate(['/signup']);
+  }
+
+  getSeller() {
+    this.userService.getSeller(this.email).subscribe({
+      next: (response: any) => {
+        this.user = response.user;
+
+        // Save user info in localStorage
+        if (this.user) {
+          localStorage.setItem('name', this.user.name.toString());
+          localStorage.setItem('id', this.user.id.toString());
+          localStorage.setItem('email', this.user.email.toString());
+          console.log('success=====================');
+        }
+      },
+      error: (err) => {
+        console.error('❌ Failed to fetch user:', err);
+      },
+    });
   }
 
   Login(form: any) {
@@ -56,11 +73,13 @@ export class Login {
             panelClass: ['error-snackbar'],
           });
         } else {
+          // ✅ Save token
           localStorage.setItem('token', response.token);
-          // this.snackBar.open('✅ ' + response.status, 'OK', {
-          //   duration: 3000,
-          //   panelClass: ['success-snackbar'],
-          // });
+
+          // ✅ Fetch user info only after successful login
+          this.getSeller();
+
+          // Navigate
           this.router.navigate(['/seller']);
         }
       },
