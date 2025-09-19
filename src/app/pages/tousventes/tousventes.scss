@@ -55,3 +55,18 @@ ul.products li {
   font-weight: bold;
   color: #2c3e50;
 }
+
+.price-quantity {
+  display: flex;
+  gap: 12px;
+}
+
+.price {
+  font-weight: 600;
+  color: #2c3e50; /* darker for emphasis */
+}
+
+.quantity {
+  color: #7f8c8d; /* softer gray */
+  font-size: 15px;
+}
