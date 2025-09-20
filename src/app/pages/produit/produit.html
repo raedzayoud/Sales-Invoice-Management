@@ -1,39 +1,39 @@
 <div class="container">
-  <h1>Liste des Produits</h1>
+  <h1>📦 Liste des Produits</h1>
 
   <!-- Bouton Ajouter un produit -->
-  <button class="btn add">Ajouter un produit</button>
+  <button class="btn add">➕ Ajouter un produit</button>
 
   <!-- Table des produits -->
   <table class="product-table">
     <thead>
       <tr>
         <th>Nom du produit</th>
+        <th>Prix</th>
+        <th>Stock</th>
         <th>Fournisseur</th>
         <th>Catégorie</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Ordinateur Portable</td>
-        <td>HP</td>
-        <td>Électronique</td>
+      <!-- Boucle Angular -->
+      <tr *ngFor="let produit of produitModel">
+        <td>{{ produit.name }}</td>
+        <td>{{ produit.price }} €</td>
+        <td>{{ produit.stock }}</td>
+        <td>{{ produit.supplierName }}</td>
+        <td>{{ produit.categoryName }}</td>
         <td>
-          <button class="btn edit">Modifier</button>
-          <button class="btn delete">Supprimer</button>
+          <button class="btn edit">✏️ Modifier</button>
+          <button class="btn delete">🗑️ Supprimer</button>
         </td>
       </tr>
-      <tr>
-        <td>Souris Sans Fil</td>
-        <td>Logitech</td>
-        <td>Accessoires</td>
-        <td>
-          <button class="btn edit">Modifier</button>
-          <button class="btn delete">Supprimer</button>
-        </td>
+
+      <!-- Message si aucun produit -->
+      <tr *ngIf="produitModel.length === 0">
+        <td colspan="6" class="no-data">Aucun produit trouvé.</td>
       </tr>
-      <!-- Ajouter plus de lignes ici -->
     </tbody>
   </table>
 </div>

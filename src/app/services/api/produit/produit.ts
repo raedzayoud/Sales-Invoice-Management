@@ -21,4 +21,16 @@ export class produitService {
     // GET request with headers
     return this.http.get(url, { headers });
   }
+
+  // deleteProduct(idProduct: number) {
+  //   const url = this.baseUrl + 'products/idProduct';
+  //   // Get token from localStorage
+  //   const token = localStorage.getItem('token') || '';
+  //   const headers = new HttpHeaders({
+  //     Authorization: `Bearer ${token}`,
+  //     'Content-Type': 'application/json',
+  //   });
+
+  //   return this.http.delete(url, { headers });
+  // }
 }
