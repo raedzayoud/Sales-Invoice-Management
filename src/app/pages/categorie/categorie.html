@@ -1,8 +1,31 @@
 <div class="container">
-  <h1>Liste des Catégories</h1>
+  <h1>📂 Liste des Catégories</h1>
 
   <!-- Bouton Ajouter une catégorie -->
-  <button class="btn add">Ajouter une catégorie</button>
+  <button class="btn add" (click)="openClientForm()">
+    ➕ Ajouter une catégorie
+  </button>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="showClientForm">
+    <div class="modal-content">
+      <span class="close" (click)="closeClientForm()">&times;</span>
+      <h2>Ajouter Catégorie</h2>
+      <p>Entrez le nom de la nouvelle catégorie</p>
+
+      <form>
+        <label for="categorieName">Nom de la catégorie</label>
+        <input
+          id="categorieName"
+          name="categorieName"
+          type="text"
+          placeholder="Ex: Informatique"
+        />
+
+        <button type="submit" class="btn-submit">Ajouter</button>
+      </form>
+    </div>
+  </div>
 
   <!-- Table des catégories -->
   <table class="category-table">
@@ -10,30 +33,24 @@
       <tr>
         <th>ID</th>
         <th>Nom de la catégorie</th>
-        <th>Description</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Électronique</td>
-        <td>Appareils et gadgets électroniques</td>
+      <!-- Boucle Angular -->
+      <tr *ngFor="let categorie of categorieModel">
+        <td>{{ categorie.id }}</td>
+        <td>{{ categorie.nom }}</td>
         <td>
-          <button class="btn edit">Modifier</button>
-          <button class="btn delete">Supprimer</button>
+          <button class="btn edit">✏️ Modifier</button>
+          <button class="btn delete">🗑️ Supprimer</button>
         </td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Accessoires</td>
-        <td>Souris, claviers et autres accessoires</td>
-        <td>
-          <button class="btn edit">Modifier</button>
-          <button class="btn delete">Supprimer</button>
-        </td>
+
+      <!-- Message si aucune catégorie -->
+      <tr *ngIf="categorieModel.length === 0">
+        <td colspan="4" class="no-data">Aucune catégorie trouvée.</td>
       </tr>
-      <!-- Ajouter plus de lignes ici -->
     </tbody>
   </table>
 </div>
