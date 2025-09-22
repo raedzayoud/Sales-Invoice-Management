@@ -8,7 +8,6 @@ import { Admin } from './pages/admin/admin';
 import { Tableau } from './pages/tableau/tableau';
 import { Produit } from './pages/produit/produit';
 import { Categorie } from './pages/categorie/categorie';
-import { Venteradmin } from './pages/venteradmin/venteradmin';
 import { Fournisseur } from './pages/fournisseur/fournisseur';
 import { Rapport } from './pages/rapport/rapport';
 import { Injectable } from '@angular/core';
@@ -59,7 +58,6 @@ export const routes: Routes = [
       { path: 'tableau', component: Tableau },
       { path: 'produit', component: Produit },
       { path: 'categorie', component: Categorie },
-      { path: 'venteradmin', component: Venteradmin },
       { path: 'fournisseur', component: Fournisseur },
       { path: 'rapport', component: Rapport },
     ],

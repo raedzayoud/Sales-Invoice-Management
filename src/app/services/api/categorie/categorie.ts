@@ -21,4 +21,18 @@ export class CategorieService {
     // GET request with headers
     return this.http.get(url, { headers });
   }
+
+  addCategorie(nom: string) {
+    const url = this.baseUrl + 'categories';
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    // Wrap nom in an object
+    const body = { nom: nom };
+
+    return this.http.post(url, body, { headers });
+  }
 }

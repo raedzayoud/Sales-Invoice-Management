@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class FournisseurService {
+export class RapportService {
   baseUrl: string = 'http://127.0.0.1:8080/api/';
 
   constructor(private http: HttpClient) {}
 
-  getAllFournisseur() {
-    const url = this.baseUrl + 'suppliers';
+  getAllRapport() {
+    const url = this.baseUrl + 'rapport/ventes';
     // Get token from localStorage
     const token = localStorage.getItem('token') || '';
     const headers = new HttpHeaders({
@@ -20,19 +20,5 @@ export class FournisseurService {
 
     // GET request with headers
     return this.http.get(url, { headers });
-  }
-
-  addFournisseur(nom: string, phone: string) {
-    const url = this.baseUrl + 'suppliers';
-    const token = localStorage.getItem('token') || '';
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    });
-
-    // Wrap nom in an object
-    const body = { nom: nom, phone: phone };
-
-    return this.http.post(url, body, { headers });
   }
 }

@@ -21,4 +21,17 @@ export class SalesService {
     // GET request with headers
     return this.http.get(url, { headers });
   }
+
+  getClientCount() {
+    const url = `${this.baseUrl}sales/clients/count`;
+
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    // GET request with headers
+    return this.http.get(url, { headers });
+  }
 }

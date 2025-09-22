@@ -16,23 +16,26 @@
       <div class="modal-content">
         <span class="close" (click)="closeClientForm()">&times;</span>
         <h2>Ajouter Fournisseur</h2>
-        <p>Entrez le nom de la nouvelle Fournisseur</p>
+        <p>Entrez les informations du nouveau fournisseur</p>
 
-        <form>
-          <label for="categorieName">Nom de la Fournisseur</label>
+        <!-- ✅ Utilisation de ngSubmit -->
+        <form (ngSubmit)="ajouterFournisseur()">
+          <label for="fournisseurName">Nom du Fournisseur</label>
           <input
-            id="categorieName"
-            name="categorieName"
+            id="fournisseurName"
+            name="fournisseurName"
             type="text"
             placeholder="Ex: HP"
+            [(ngModel)]="name"
           />
 
-          <label for="PhoneFournisseur">Phone de la Fournisseur</label>
+          <label for="phoneFournisseur">Téléphone du Fournisseur</label>
           <input
-            id="PhoneFournisseur"
-            name="PhoneFournisseur"
+            id="phoneFournisseur"
+            name="phoneFournisseur"
             type="text"
             placeholder="Ex: 27740388"
+            [(ngModel)]="phone"
           />
 
           <button type="submit" class="btn-submit">Ajouter</button>
@@ -87,7 +90,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Boucle Angular sans pipe -->
         <tr *ngFor="let fournisseur of fournisseurModel">
           <td>
             <strong>{{ fournisseur.id }}</strong>
@@ -101,9 +103,8 @@
           </td>
         </tr>
 
-        <!-- Si aucun fournisseur -->
         <tr *ngIf="fournisseurModel.length === 0">
-          <td colspan="6" class="no-data">Aucun fournisseur trouvé.</td>
+          <td colspan="3" class="no-data">Aucun fournisseur trouvé.</td>
         </tr>
       </tbody>
     </table>
