@@ -76,6 +76,7 @@ export class Login {
         } else {
           // ✅ Save token
           sessionStorage.setItem('token', response.token);
+          sessionStorage.setItem('role', response.role);
           this.role = response.role;
           // ✅ Fetch user info only after successful login
           this.getSeller();

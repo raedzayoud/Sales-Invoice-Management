@@ -14,18 +14,38 @@ import { Injectable } from '@angular/core';
 import { ventes } from './pages/ventes/ventes';
 
 @Injectable({
-  providedIn: 'root', // 🔥 Angular va s’occuper d’injecter
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    const token = sessionStorage.getItem('token'); // or sessionStorage
+    const token = sessionStorage.getItem('token');
+    const role = sessionStorage.getItem('role');
 
-    if (token) {
-      return true;
+    if (token && role === 'SELLER') {
+      return true; // allow access
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login']); // block access
+      return false;
+    }
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AdminGuard implements CanActivate {
+  constructor(private router: Router) {}
+
+  canActivate(): boolean {
+    const token = sessionStorage.getItem('token');
+    const role = sessionStorage.getItem('role');
+
+    if (token && role === 'ADMIN') {
+      return true; // allow access
+    } else {
+      this.router.navigate(['/login']); // block access
       return false;
     }
   }
@@ -53,6 +73,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: Admin,
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'tableau', pathMatch: 'full' },
       { path: 'tableau', component: Tableau },

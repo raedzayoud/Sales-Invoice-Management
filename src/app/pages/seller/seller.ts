@@ -72,7 +72,7 @@ export class Seller {
   }
 
   Deconnexion() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 }
