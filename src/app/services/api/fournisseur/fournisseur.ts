@@ -12,7 +12,7 @@ export class FournisseurService {
   getAllFournisseur() {
     const url = this.baseUrl + 'suppliers';
     // Get token from localStorage
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export class FournisseurService {
 
   addFournisseur(nom: string, phone: string) {
     const url = this.baseUrl + 'suppliers';
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ export class SalesService {
   getAllSalesBySeller(iduser: number) {
     const url = `${this.baseUrl}sales/user/${iduser}`;
 
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export class SalesService {
   getClientCount() {
     const url = `${this.baseUrl}sales/clients/count`;
 
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',

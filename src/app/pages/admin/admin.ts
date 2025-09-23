@@ -17,4 +17,9 @@ export class Admin {
     this.activeLink = link;
     this.router.navigate(['admin', link]); // navigate to child route
   }
+
+  Deconnexion() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

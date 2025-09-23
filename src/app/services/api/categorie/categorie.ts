@@ -12,7 +12,7 @@ export class CategorieService {
   getAllCategorie() {
     const url = this.baseUrl + 'categories';
     // Get token from localStorage
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export class CategorieService {
 
   addCategorie(nom: string) {
     const url = this.baseUrl + 'categories';
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',

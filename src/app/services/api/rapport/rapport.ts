@@ -12,7 +12,7 @@ export class RapportService {
   getAllRapport() {
     const url = this.baseUrl + 'rapport/ventes';
     // Get token from localStorage
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',

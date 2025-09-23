@@ -21,6 +21,7 @@ export class Login {
   notifcation: string = '';
   loading: boolean = false;
   user: UserModel | null = null;
+  role: string = '';
 
   constructor(
     private router: Router,
@@ -74,13 +75,17 @@ export class Login {
           });
         } else {
           // ✅ Save token
-          localStorage.setItem('token', response.token);
-
+          sessionStorage.setItem('token', response.token);
+          this.role = response.role;
           // ✅ Fetch user info only after successful login
           this.getSeller();
-
           // Navigate
-          this.router.navigate(['/seller']);
+          if (this.role === 'SELLER') {
+            console.log(response.role);
+            this.router.navigate(['/seller']);
+          } else {
+            this.router.navigate(['/admin']);
+          }
         }
       },
       error: () => {

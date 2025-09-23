@@ -12,7 +12,7 @@ export class UserService {
     const url = `${this.baseUrl}user/email/${email}`;
 
     // Get token from localStorage
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ClientService } from '../../services/api/client/client';
 import { SharedclientService } from '../../services/shared/sharedclient';
 
@@ -29,7 +29,8 @@ export class Seller {
 
   constructor(
     private clientService: ClientService,
-    private sharedclientService: SharedclientService
+    private sharedclientService: SharedclientService,
+    private router: Router
   ) {}
 
   openClientForm() {
@@ -68,5 +69,10 @@ export class Seller {
         this.loadingClient = false;
       },
     });
+  }
+
+  Deconnexion() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

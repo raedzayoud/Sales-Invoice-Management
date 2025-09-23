@@ -12,7 +12,7 @@ export class produitService {
   getAllProduits() {
     const url = this.baseUrl + 'products';
     // Get token from localStorage
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export class produitService {
 
   addProduit(newProduit: any) {
     const url = this.baseUrl + 'products';
-    const token = localStorage.getItem('token') || '';
+    const token = sessionStorage.getItem('token') || '';
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
