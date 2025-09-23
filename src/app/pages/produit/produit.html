@@ -80,28 +80,29 @@
   </div>
 
   <!-- Table des produits -->
-  <table class="product-table">
-    <thead>
-      <tr>
-        <th>Nom du produit</th>
-        <th>Prix</th>
-        <th>Stock</th>
-        <th>Fournisseur</th>
-        <th>Catégorie</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let produit of produitModel">
-        <td>{{ produit.name }}</td>
-        <td>{{ produit.price }} €</td>
-        <td>{{ produit.stock }}</td>
-        <td>{{ produit.supplierName }}</td>
-        <td>{{ produit.categoryName }}</td>
-      </tr>
-
-      <tr *ngIf="produitModel.length === 0">
-        <td colspan="5" class="no-data">Aucun produit trouvé.</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Nom du produit</th>
+          <th>Prix</th>
+          <th>Stock</th>
+          <th>Fournisseur</th>
+          <th>Catégorie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produit of produitModel">
+          <td>{{ produit.name }}</td>
+          <td>{{ produit.price }} €</td>
+          <td>{{ produit.stock }}</td>
+          <td>{{ produit.supplierName }}</td>
+          <td>{{ produit.categoryName }}</td>
+        </tr>
+        <tr *ngIf="produitModel.length === 0">
+          <td colspan="5" class="no-data">Aucun produit trouvé.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

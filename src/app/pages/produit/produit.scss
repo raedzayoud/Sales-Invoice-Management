@@ -42,24 +42,45 @@ h1 {
 }
 
 /* Table */
+/* Make table container scrollable horizontally */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* horizontal scroll */
+  max-height: 70vh; /* optional: vertical scroll */
+  overflow-y: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+/* Table styles remain mostly the same */
 .product-table {
   width: 100%;
+  min-width: 600px; /* ensures table doesn't shrink too much */
   border-collapse: collapse;
-  background-color: white;
-  border-radius: 10px;
-  overflow: hidden;
 }
 
+/* Sticky header when scrolling vertically */
+.product-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #eaf6f8;
+  z-index: 2;
+}
+
+/* Table cell padding */
 .product-table th,
 .product-table td {
-  padding: 15px;
-  text-align: left;
+  padding: 12px 15px;
   border-bottom: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap; /* prevent breaking cell text */
 }
 
-.product-table th {
-  background-color: #eaf6f8;
-  color: #2c3e50;
+/* Optional: Zebra striping for rows */
+.product-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 /* Boutons CRUD */
