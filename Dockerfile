@@ -1,12 +1,22 @@
-From node:latest as builder
-
-RUN mkdir -p /app
+FROM node:latest AS builder
 
 WORKDIR /app
 
-COPY . /app
-
-
+COPY package*.json ./
 RUN npm install
-RUN npm run build --prod
-CMD ["node", "start"]
+
+COPY . .
+RUN npm run build
+
+FROM node:alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+
+RUN npm install -g serve
+
+EXPOSE 4200
+
+# Utiliser le bon nom avec majuscule
+CMD ["serve", "-s", "dist/Sales-invoice-management/browser", "-l", "4200"]
